@@ -1,0 +1,85 @@
+body {
+  font-family: 'Raleway', sans-serif;
+}
+form {
+  border: 3px solid #f1f1f1;
+  border-radius: 25px;
+  width: 90%;
+  margin: auto;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 1s;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+button {
+  background-color:#00e676;
+  border: 0px;
+  border-radius: 25px;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  cursor: pointer;
+  width: auto;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.registerButton {
+  float: right;
+  background-color:#c62828;
+}
+
+.container {
+  padding: 16px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+/* Change styles for small screens */
+@media screen and (max-width: 500px) {
+  span.psw {
+    display: block;
+    float: none;
+  }
+  button {
+    width: 100%;
+  }
+  form {
+    width: 90%;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  form {
+    width: 70%;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  form {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  form {
+    width: 30%;
+  }
+}

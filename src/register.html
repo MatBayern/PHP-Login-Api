@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="index.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;800&display=swap" rel="stylesheet"> 
-    <title>Login</title>
+    <title>Registration</title>
 </head>
 
 <body>
@@ -17,20 +17,20 @@
         <div class="container">
             <label for="uname"><b>Username</b></label>
             <input type="text" placeholder="Enter Username" id="username" required autocomplete="off">
+
             <label for="psw"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" id="password" required>
-            <button id="submit" type="submit" class="button">Login</button>
-            <a href="register.html"><button type="button" class="registerButton">Register</button></a>
-            <label>
-                <br>
-                <input type="checkbox" checked="checked" id="remember"> Remember me 
-            </label>
+            <input type="password" placeholder="Enter your Password" id="password0" required> 
+            <input type="password" placeholder="Enter your Password again" id="password1" required>
+            
+
+            <button id="submit" style="background-color: #c62828;">Register</button>
+            <button type="button" onclick="window.location.href='index.html'" class="registerButton" style="background-color: #00e676;">Login</button>
         </div>
 
         
     </form>
 
-    <script src="index.js"></script>
+    <script src="register.js"></script>
 
 </body>
 

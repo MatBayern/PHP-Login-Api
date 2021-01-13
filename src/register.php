@@ -1,0 +1,84 @@
+<?php
+error_reporting(E_ALL);
+ini_set("display_errors", 1);
+
+require "config.php";
+
+if (isset($_POST["username"]) && isset($_POST["password0"]) && isset($_POST["password1"])) {
+    $username = $_POST["username"];
+    $password0 = $_POST["password0"];
+    $password1 = $_POST["password1"];
+} else {
+    $username;
+    $password0;
+    $password1;
+}
+
+class userData
+{
+    public $created = true;
+    public $createdUser;
+    public $error;
+}
+$userData = new userData();
+
+function throwError($errorMessage)
+{
+    global $userData;
+    $userData->created = false;
+    $userData->error = $errorMessage;
+}
+
+
+// check if username empty
+if (empty($username)) {
+    throwError("Username can't be empty!");
+}
+
+// check if password empty
+if (empty($password0) || empty($password1)) {
+    throwError("Password can't be empty!");
+}
+
+// check if passwords are equal
+if ($password0 != $password1) {
+    throwError("Passwords are not equal!");
+}
+
+// Create connection
+$conn = new mysqli($dbServername, $dbUsername, $dbPassword, $dbName);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Check if user exists
+$stmt = $conn->prepare('SELECT user FROM user WHERE user = ?');
+$stmt->bind_param("s", $username);
+$stmt->execute();
+$result = $stmt->get_result();
+if ($result->num_rows > 0) {
+    throwError("User already exits!");
+}
+// Checking if the username is too long
+if (strlen($username) > 200) {
+    throwError("Username is too long!");
+}
+
+if ($userData->created === true) {
+    // Hash password
+    $password = password_hash($password0, PASSWORD_ARGON2ID, $hashOptions);
+
+    $userData->createdUser = $username;
+
+    $stmt = $conn->prepare("INSERT INTO user (user, password) VALUES (?, ?)");
+    $stmt->bind_param("ss", $username, $password);
+    $stmt->execute();
+}
+
+header("Content-Type: application/json");
+$json = json_encode($userData);
+print($json);
+
+$conn->close();
