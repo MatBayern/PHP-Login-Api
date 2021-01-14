@@ -1,7 +1,4 @@
 <?php
-error_reporting(E_ALL);
-ini_set("display_errors", 1);
-
 require "config.php";
 
 if (isset($_POST["username"]) && isset($_POST["password0"]) && isset($_POST["password1"])) {
@@ -62,7 +59,7 @@ if ($result->num_rows > 0) {
     throwError("User already exits!");
 }
 // Checking if the username is too long
-if (strlen($username) > 200) {
+if (strlen($username) > 64) {
     throwError("Username is too long!");
 }
 
@@ -77,8 +74,8 @@ if ($userData->created === true) {
     $stmt->execute();
 }
 
+$conn->close();
+
 header("Content-Type: application/json");
 $json = json_encode($userData);
 print($json);
-
-$conn->close();

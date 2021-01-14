@@ -42,10 +42,10 @@ if ($result->num_rows === 1) {
 
 }
 
+$conn->close();
+
 header("Content-Type: application/json");
 $loginData = new loginData();
 $loginData->login = $_SESSION["login"];
 $json = json_encode($loginData);
 print($json);
-
-$conn->close();

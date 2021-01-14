@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;800&display=swap" rel="stylesheet"> 
+</head>
+
+<body>
+    
+    <form onsubmit="return false;">
+        <div class="container">
+            <h1>Requirements</h1>
+            <table>
+                <tr>
+                    <td id="phpIcon">❌</td>
+                    <td>PHP v7.3 or greater</td>
+                    <td id="phpVersion" class="req"></td>
+                </tr>
+                <tr>
+                    <td id="mysqliIcon">❌</td>
+                    <td>MySQLi extention</td>
+                    <td id="mysqliLoaded" class="req">Modul loaded</td>
+                </tr>
+                <tr>
+                    <td id="mychmodIcon">❌</td>
+                    <td>Config write permission</td>
+                    <td id="mychmodLoaded" class="req"></td>
+                </tr>
+                
+            </table>
+            <br>
+            Before you create the table please execute this command in your terminal:<br>
+            <br>
+            <code id="code">
+                chown 
+            </code>
+            <br>
+            <br>
+            <input type="text" placeholder="Enter database username" id="dbUsername" required autocomplete="off">
+            <input type="text" placeholder="Enter database password" id="dbPassword" required autocomplete="off">
+            <input type="text" placeholder="Enter databaseserveradress" id="dbServeradress" required autocomplete="off">
+            <input type="text" placeholder="Enter database name" id="dbName" required autocomplete="off">
+            
+            <br><br>
+            <div class="vertical-center">
+                <button id="submit" style="background-color: #00838f; text-align: center;">Install</button>
+            </div>
+            
+        </div>
+    </form>
+    <script src="install.js"></script>
+</body>
+</html>

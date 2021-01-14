@@ -22,7 +22,10 @@ input[type="password"] {
   border: 1px solid #ccc;
   box-sizing: border-box;
 }
-
+.vertical-center{
+  display: flex;
+  justify-content: center;
+}
 button {
   background-color:#00e676;
   border: 0px;
@@ -32,6 +35,11 @@ button {
   margin: 8px 0;
   cursor: pointer;
   width: auto;
+}
+
+.req {
+  font-size: 10px;
+  color: #9b0000;
 }
 
 button:hover {
