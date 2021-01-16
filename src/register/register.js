@@ -1,3 +1,5 @@
+M.AutoInit();
+
 document.getElementById("submit").addEventListener("click", submit);
 function submit() {
     console.log("test");
@@ -16,8 +18,12 @@ function submit() {
         let json = JSON.parse(xhr.response);
         if(json["created"]===false)
         {
-            alert("User couldn´t be created " + json["error"]);
+            M.toast({html:"User couldn´t be created " + json["error"]});
+        }else{
+            M.toast({html: 'Sucessfully installed!'});
+            window.location.href = "../";
         }
+       
     }
     xhr.send("username=" + username + "&password0=" + password0 + "&password1=" + password1);
 }

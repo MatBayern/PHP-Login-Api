@@ -13,15 +13,10 @@ form {
   transition: width 1s;
 }
 
-input[type="text"],
-input[type="password"] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
+label {
+  user-select: none;
 }
+
 .vertical-center{
   display: flex;
   justify-content: center;
@@ -37,13 +32,21 @@ button {
   width: auto;
 }
 
+button:hover {
+  opacity: 0.8;
+}
+
+button:active {
+  background-color:#00e676;
+}
+
+button:focus {
+  background-color: #00e676;;
+}
+
 .req {
   font-size: 10px;
   color: #9b0000;
-}
-
-button:hover {
-  opacity: 0.8;
 }
 
 .registerButton {
@@ -53,11 +56,6 @@ button:hover {
 
 .container {
   padding: 16px;
-}
-
-span.psw {
-  float: right;
-  padding-top: 16px;
 }
 
 /* Change styles for small screens */

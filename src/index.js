@@ -1,3 +1,5 @@
+M.AutoInit();
+
 document.getElementById("submit").addEventListener("click", submit);
 
 function submit() {
@@ -15,7 +17,11 @@ function submit() {
     xhr.onload = function () { // Call a function when the state changes.
         let json = JSON.parse(xhr.response);
         if (json["login"] === true) {
-            window.location.href = "test.html";
+           window.location.href = "https://woody.pizza/";
+           
+        }else
+        {
+            M.toast({html:"False credentials!"});
         }
         console.log(json);
     }
