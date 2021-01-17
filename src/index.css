@@ -1,28 +1,32 @@
 body {
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
 }
 form {
   border: 3px solid #f1f1f1;
   border-radius: 25px;
   width: 90%;
-  margin: auto;
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   transition: width 1s;
+  transition: top 1s;
 }
 
 label {
   user-select: none;
 }
 
-.vertical-center{
+h1 {
+  text-align: center;
+}
+
+.vertical-center {
   display: flex;
   justify-content: center;
 }
 button {
-  background-color:#00e676;
+  background-color: #00e676;
   border: 0px;
   border-radius: 25px;
   color: white;
@@ -37,11 +41,11 @@ button:hover {
 }
 
 button:active {
-  background-color:#00e676;
+  background-color: #00e676;
 }
 
 button:focus {
-  background-color: #00e676;;
+  background-color: #00e676;
 }
 
 .req {
@@ -51,7 +55,7 @@ button:focus {
 
 .registerButton {
   float: right;
-  background-color:#c62828;
+  background-color: #c62828;
 }
 
 .container {
@@ -80,12 +84,42 @@ button:focus {
 
 @media screen and (min-width: 1000px) {
   form {
-    width: 50%;
+    width: 55%;
   }
 }
 
 @media screen and (min-width: 1200px) {
   form {
-    width: 30%;
+    width: 45%;
+  }
+}
+
+@media screen and (max-height: 980px) {
+  form {
+    top: 60%;
+  }
+}
+
+@media screen and (max-height: 850px) {
+  form {
+    top: 70%;
+  }
+}
+
+@media screen and (max-height: 730px) {
+  form {
+    top: 80%;
+  }
+}
+
+@media screen and (max-height: 640px) {
+  form {
+    top: 100%;
+  }
+}
+
+@media screen and (max-height: 510px) {
+  form {
+    top: 120%;
   }
 }

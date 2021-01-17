@@ -7,7 +7,7 @@ function submit() {
 
     let username = document.getElementById("username").value;
     let password = document.getElementById("password").value;
-
+    if (password !== "" && username !== "") {
     var xhr = new XMLHttpRequest();
     xhr.open("POST", 'login.php', true);
 
@@ -26,6 +26,7 @@ function submit() {
         console.log(json);
     }
     xhr.send("username=" + username + "&password=" + password);
+}
 }
 
 console.log("loaded")

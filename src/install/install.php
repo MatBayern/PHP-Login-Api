@@ -41,7 +41,7 @@ if ($conn->connect_error) {
     $tableData->error = "Connection failed: " . $conn->connect_error;
 }
 
-$sql = 'CREATE TABLE `php-login`.`user` ( `user` VARCHAR(64) NOT NULL ,  `password` TINYTEXT NOT NULL ,  `creationDate` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,  `ID` INT NOT NULL AUTO_INCREMENT ,    PRIMARY KEY  (`ID`),    UNIQUE  (`user`));';
+$sql = 'CREATE TABLE `php-login`.`user` ( `user` VARCHAR(64) NOT NULL ,  `password` TINYTEXT NOT NULL ,  `permissions` JSON ,  `creationDate` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,  `ID` INT NOT NULL AUTO_INCREMENT ,    PRIMARY KEY  (`ID`),    UNIQUE  (`user`));';
 
 if ($tableData->success) {
     if ($conn->query($sql) === true) {

@@ -6,14 +6,16 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../materialize/materialize.min.css">
     <link rel="stylesheet" href="../index.css">
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;800&display=swap" rel="stylesheet"> 
+    <title>Installer page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;800&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    
+
     <form onsubmit="return false;">
         <div class="container">
-            <h1 style="text-align: justify;">Requirements</h1>
+            <h1>Database</h1>
+            <h5>Requirements:</h5>
             <table>
                 <tr>
                     <td id="phpIcon">❌</td>
@@ -30,7 +32,7 @@
                     <td>Config write permission</td>
                     <td id="mychmodLoaded" class="req"></td>
                 </tr>
-                
+
             </table>
             <br>
             Before you create the table please execute this command in your terminal:<br>
@@ -40,31 +42,33 @@
             </code>
             <br>
             <br>
+            <h5>Set up a mysql database connection:</h5>
             <div class="input-field">
-            <input type="text" id="dbUsername" required autocomplete="off">
-            <label for="password">Username</label>
-        </div>
-        <div class="input-field">    
-        <input type="text"  id="dbPassword" required autocomplete="off">
-        <label for="password">Password</label>
-    </div>
-        <div class="input-field">        
-        <input type="text" id="dbServeradress" required autocomplete="off">
-        <label for="password">Database adress</label>
-    </div>
-        <div class="input-field">        
-        <input type="text"  id="dbName" required autocomplete="off">
-        <label for="password">Database name</label>
-    </div> 
+                <input type="text" id="dbUsername" required autocomplete="off" class="validate">
+                <label for="dbUsername">Username</label>
+            </div>
+            <div class="input-field">
+                <input type="text" id="dbPassword" required autocomplete="off" class="validate">
+                <label for="dbPassword">Password</label>
+            </div>
+            <div class="input-field">
+                <input type="text" id="dbServeradress" required autocomplete="off" value="localhost" class="validate valid">
+                <label for="dbServeradress">Database adress</label>
+            </div>
+            <div class="input-field">
+                <input type="text" id="dbName" required autocomplete="off" class="validate">
+                <label for="dbName">Database name</label>
+            </div>
             <br><br>
             <div class="vertical-center">
                 <button id="submit" style="background-color: #00838f; text-align: center;">Install</button>
             </div>
-            
         </div>
     </form>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <script src="../materialize/materialize.min.js"></script>
     <script src="install.js"></script>
-    
+
 </body>
+
 </html>

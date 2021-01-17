@@ -1,1 +1,46 @@
-zeas
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../materialize/materialize.min.css">
+    <link rel="stylesheet" href="../../index.css">
+    <title>Create an admin account</title>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <form onsubmit="return false;">
+        
+            <h1>Admin account</h1>
+            <div class="container">
+                <div class="input-field">
+                    <input id="username" type="text" class="validate" autocomplete="off" required value="root">
+                    <label for="username">Username</label>
+                </div>
+
+                <div class="input-field">
+                    <input id="password0" type="password" class="validate" required>
+                    <label for="password0">Password</label>
+                </div>
+                <div class="input-field">
+                    <input id="password1" type="password" class="validate" required>
+                    <label for="password1">Password</label>
+                </div>
+
+                <div style=" text-align: center;">
+                    <button id="submit"  type="submit" class="button">Register</button>
+                </div>
+
+            </div>
+
+       
+    </form>
+
+</body>
+<script src="../../materialize/materialize.min.js"></script>
+<script src="admin.js"></script>
+
+</html>
