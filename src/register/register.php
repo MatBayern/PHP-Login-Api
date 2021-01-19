@@ -1,7 +1,4 @@
 <?php
-error_reporting(E_ALL);
-ini_set("display_errors", 1);
-
 require "../config.php";
 
 if (isset($_POST["username"]) && isset($_POST["password0"]) && isset($_POST["password1"])) {
@@ -67,15 +64,8 @@ if (strlen($username) > 64) {
 }
 
 if ($userData->created === true) {
-    // Hash password
-    // $password = password_hash($password0, PASSWORD_ARGON2ID, $hashOptions);
-    $password = password_hash($password0, PASSWORD_ARGON2ID);
-
-    $userData->createdUser = $username;
-
-    $stmt = $conn->prepare("INSERT INTO user (user, password) VALUES (?, ?)");
-    $stmt->bind_param("ss", $username, $password);
-    $stmt->execute();
+    require "../api/user.php";
+    $user->addUser($username, $password0);
 }
 
 $conn->close();

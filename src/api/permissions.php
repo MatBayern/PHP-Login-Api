@@ -38,7 +38,7 @@ class PERMISSIONS
     public function checkPermission($user, $permissions)
     {
         $oldPermissons = $this->getPermissions($user);
-        if ($oldPermissons !== null) {
+        if (isset($output["permissions"])) {
             if (in_array($permissions, $oldPermissons)) {
                 $output = true;
             } else {
@@ -54,6 +54,9 @@ class PERMISSIONS
     public function addPermissions($user)
     {
         $oldPermissons = $this->getPermissions($user);
+        if (!isset($output["permissions"])) {
+            $oldPermissons = array();
+        }
         $args = func_get_args();
         for ($i = 1; $i < count($args); $i++) {
             $permission = $args[$i];
@@ -61,6 +64,7 @@ class PERMISSIONS
                 array_push($oldPermissons, $permission);
             }
         }
+        $oldPermissons = array_unique($oldPermissons);
         $permissions = json_encode($oldPermissons);
 
         // prepare and bind
@@ -69,7 +73,7 @@ class PERMISSIONS
         $stmt->execute();
     }
 
-    public function removePermissions($user)
+    public function deletePermissions($user)
     {
         $oldPermissons = $this->getPermissions($user);
         $args = func_get_args();
@@ -82,7 +86,7 @@ class PERMISSIONS
                 $oldPermissons = array_values($oldPermissons);
             }
         }
-       
+
         $permissions = json_encode($oldPermissons);
 
         // prepare and bind

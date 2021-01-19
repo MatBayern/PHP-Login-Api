@@ -5,12 +5,12 @@ form {
   border: 3px solid #f1f1f1;
   border-radius: 25px;
   width: 90%;
-  position: absolute;
+  position: relative;
   left: 50%;
-  top: 50%;
+  top: 400px;
   transform: translate(-50%, -50%);
   transition: width 1s;
-  transition: top 1s;
+  margin-bottom: 100px;
 }
 
 label {
@@ -20,6 +20,7 @@ label {
 h1 {
   text-align: center;
 }
+
 
 .vertical-center {
   display: flex;
@@ -94,32 +95,3 @@ button:focus {
   }
 }
 
-@media screen and (max-height: 980px) {
-  form {
-    top: 60%;
-  }
-}
-
-@media screen and (max-height: 850px) {
-  form {
-    top: 70%;
-  }
-}
-
-@media screen and (max-height: 730px) {
-  form {
-    top: 80%;
-  }
-}
-
-@media screen and (max-height: 640px) {
-  form {
-    top: 100%;
-  }
-}
-
-@media screen and (max-height: 510px) {
-  form {
-    top: 120%;
-  }
-}
