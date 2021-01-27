@@ -1,14 +1,11 @@
 M.AutoInit();
-
 document.getElementById("submit").addEventListener("click", submit);
 function submit() {
-    console.log("test");
-
     let username = document.getElementById("username").value;
     let password0 = document.getElementById("password0").value;
     let password1 = document.getElementById("password1").value;
     if (password1 !== password0) {
-        console.log("kokok")
+       
         document.getElementById("password1").classList.remove("valid");
         document.getElementById("password0").classList.remove("valid");
         document.getElementById("password1").classList.add("invalid");
@@ -29,8 +26,8 @@ function submit() {
 
         xhr.onload = function () { // Call a function when the state changes.
             let json = JSON.parse(xhr.response);
-            if (json["created"] === false) {
-                M.toast({ html: "User couldn´t be created " + json["error"] });
+            if (json["error"] === true) {
+                M.toast({ html: "User couldn´t be created. " + json["errorMessage"] });
             } else {
                 M.toast({ html: 'Sucessfully installed!' });
                 window.location.href = "../";

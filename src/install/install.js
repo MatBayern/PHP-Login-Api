@@ -20,11 +20,12 @@ function submit() {
         xhr.onload = function () { // Call a function when the state changes.
             let json = JSON.parse(xhr.response);
             if (json["success"] === true) {
-                alert("Successfully installed!");
+                
+                M.toast({ html:"Successfully installed!"});
                 window.location.href = "admin/index.html";
             } else {
 
-                alert(json["error"]);
+                M.toast({ html:json["error"]});
             }
         }
 
@@ -41,7 +42,8 @@ function onstart(firstStart = false) {
             document.getElementById("code").innerHTML += json["processUser"] + " " + json["configPath"];
         }
         document.getElementById("phpVersion").innerHTML = "installed version: " + json["phpVersion"];
-        document.getElementById("mychmodLoaded").innerHTML = "Current chmod status: " + json["configPermission"] + "<br>Current owner: " + json["configOwner"];
+        document.getElementById("mychmodLoaded").innerHTML = "Current chmod status: " + json["configPermission"] + "<br>Current owner: " + json["configOwner"]
+        +"<br>Current group: "+json["configGroup"] ;
         if (json["phpVersionCompatible"] === true) {
             document.getElementById("phpIcon").innerHTML = "✅";
             document.getElementById("phpVersion").style.color = "#1faa00";

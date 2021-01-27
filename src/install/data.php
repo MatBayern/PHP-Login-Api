@@ -7,8 +7,10 @@ class INFO {
     public $phpMysqliInstalled;
     public $configPermission;
     public $configOwner;
+    public $configGroup;
     public $configWritable;
     public $processUser;
+    
     
     function __construct(){
         $this->configPath = realpath('../config.php');
@@ -18,9 +20,10 @@ class INFO {
             $this->phpVersionCompatible = true;
         }
         $this->phpMysqliInstalled = in_array('mysqli', get_loaded_extensions());
-        $this->configPermission = substr(sprintf('%o', fileperms('../config.php')), -4);
-        $this->configOwner = posix_getpwuid(fileowner($filename))['name'];
-        $this->configWritable = is_writable('../config.php');
+        $this->configPermission = substr(sprintf('%o', fileperms($this->configPath)), -4);
+        $this->configOwner = posix_getpwuid(fileowner($this->configPath))["name"];
+        $this->configGroup = posix_getpwuid(filegroup($this->configPath))["name"];
+        $this->configWritable = is_writable($this->configPath);
         $this->processUser = posix_getpwuid(posix_geteuid())['name'];
     }
     function getJSON() {

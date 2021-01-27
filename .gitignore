@@ -1,3 +1,6 @@
 /src/phpMyAdmin
 #/src/config.php
 /src/test.php
+/src/api/permissions.old.php
+/src/api/request.old.php
+/src/api/user.old.php

@@ -35,6 +35,7 @@ $_SESSION["login"] = false;
 if ($result->num_rows === 1) {
     if (password_verify($password, $output["password"])) {
         $_SESSION["login"] = true;
+        $_SESSION["username"] = $username;
         if ($redirect === true) {
             header("Location: " . $redirectPath);
         }
