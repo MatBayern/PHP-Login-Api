@@ -29,7 +29,7 @@ class LOGIN
             $this->password0 = $_POST["password0"];
             $this->password1 = $_POST["password1"];
         }
-        require "../config.php";
+        require __DIR__ . "/../config.php";
 
         // Create connection
         $this->conn = new mysqli($dbServername, $dbUsername, $dbPassword, $dbName);
@@ -70,7 +70,7 @@ class LOGIN
         for ($i = 2; $i < count($args); $i++) {
             array_push($permission, $args[$i]);
         }
-        call_user_func_array(array($permissions, "addPermissions"), $permission);
+        call_user_func_array(array($this, "addPermissions"), $permission);
     }
 
     public function deleteUser($username)
