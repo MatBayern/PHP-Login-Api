@@ -117,7 +117,7 @@ class LOGIN
     public function checkPermission($user, $permissions)
     {
         $oldPermissons = $this->getPermissions($user);
-        if (isset($output["permissions"])) {
+        if (isset($oldPermissons)) {
             if (in_array($permissions, $oldPermissons)) {
                 $output = true;
             } else {
