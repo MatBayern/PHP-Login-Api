@@ -24,7 +24,7 @@ function submit() {
         if (json["error"] === true) {
             M.toast({ html: "User couldn´t be created. " + json["errorMessage"] });
         } else {
-            M.toast({ html: 'Sucessfully installed!' });
+            M.toast({ html: 'Sucessfully created!' });
     }
 }
     xhr.send("username=" + username + "&password0=" + password0 + "&password1=" + password1);

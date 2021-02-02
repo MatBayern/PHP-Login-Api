@@ -23,6 +23,7 @@ class LOGIN
     //Contstructor
     public function __construct()
     {
+        session_start();
         //Check if content is in the POST request
         if ((isset($_POST["username"]) && isset($_POST["password0"]) && isset($_POST["password1"]))) {
             $this->username = $_POST["username"];
@@ -94,6 +95,23 @@ class LOGIN
         }
     }
 
+    public function getUser($user = "", $limit = -1)
+    {
+        $user = '%' . $user . '%';
+        if ($limit < 0) {
+            $stmt = $this->conn->prepare('SELECT user, password, permissions, creationDate, ID FROM user WHERE user LIKE ?');
+            $stmt->bind_param("s", $user);
+        } else {
+            $stmt = $this->conn->prepare('SELECT user, permissions, creationDate, ID FROM user WHERE user LIKE ? LIMIT ?');
+            $stmt->bind_param("si", $user, $limit);
+        }
+
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $output = $result->fetch_all(MYSQLI_ASSOC);
+        return $output;
+    }
+
     /*
 
     PERMISSONS
@@ -127,6 +145,25 @@ class LOGIN
             $output = false;
         }
 
+        return $output;
+    }
+
+    public function checkPermissions($user)
+    {
+        $oldPermissons = $this->getPermissions($user);
+        $args = func_get_args();
+        $output = true;
+        
+        for ($i = 1; $i < count($args); $i++) {
+            $permission = $args[$i];
+            
+            if ($this->checkPermission($user, $permission)) {
+                $output = true;
+            } else {
+                $output = false;
+                break;
+            }
+        }
         return $output;
     }
 
@@ -251,6 +288,12 @@ class LOGIN
 
     }
 
+    public function throwErrorPage($errorMessage, $errorcode = 500)
+    {
+        http_response_code($errorcode);
+        exit($errorMessage);
+    }
+
     public function throwSuccess()
     {
         $error = new ERR();
@@ -259,6 +302,29 @@ class LOGIN
         $json = json_encode($error);
         print($json);
         exit();
+    }
+    /*
+
+    LOGIN CHECKER
+
+     */
+    public function checkLogin()
+    {
+
+        if (!$_SESSION["login"]) {
+            $this->throwErrorPage("<h1>Access denied</h1>", 403);
+        }
+    }
+    public function checkLoginWithPermissions($username)
+    {
+        $args = func_get_args();
+
+        if (!call_user_func_array(array($this, "checkPermissions"), $args)) {
+            $this->throwErrorPage("<h1>Access denied</h1>", 403);
+        } else {
+            $this->throwSuccess();
+        }
+
     }
 }
 

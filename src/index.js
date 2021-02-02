@@ -17,7 +17,7 @@ function submit() {
     xhr.onload = function () { // Call a function when the state changes.
         let json = JSON.parse(xhr.response);
         if (json["login"] === true) {
-           window.location.href = "https://woody.pizza/";
+           window.location.href = "admin";
            
         }else
         {
