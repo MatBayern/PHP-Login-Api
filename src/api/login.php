@@ -79,6 +79,15 @@ class LOGIN
         $stmt = $this->conn->prepare("DELETE FROM `user` WHERE `user` = ?");
         $stmt->bind_param("s", $username);
         $stmt->execute();
+
+        // prüfen ob mehrere nutzer mit gleichen namen existieren
+    }
+
+    public function deleteUserByID($id)
+    {
+        $stmt = $this->conn->prepare("DELETE FROM `user` WHERE `ID` = ?");
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
     }
 
     public function checkUser($user)
@@ -109,6 +118,9 @@ class LOGIN
         $stmt->execute();
         $result = $stmt->get_result();
         $output = $result->fetch_all(MYSQLI_ASSOC);
+        for ($i=0; $i < count($output); $i++) { 
+            $output[$i]["permissions"] = json_decode($output[$i]["permissions"]);
+        }
         return $output;
     }
 

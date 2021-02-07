@@ -3,69 +3,73 @@
 
 <head>
 
-    <link rel="stylesheet" type="text/css" href="gui.css">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@900" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=0.6">
-    <title>Admin User</title>
+    <title>Admin User Interdface</title>
 </head>
 
 <body>
-    
-    <div class="container" style="text-align: center; display: table;">
-        <br>
-        <h1>Admin interface</h1>
-        <h5>Add new User:</h5>
-        <div class="row">
-            <div class="input-field col s3">
-                <input id="username" type="text" class="validate">
-                <label for="username">Username</label>
-            </div>
-            <div class="input-field col s3">
-                <input id="password0" type="password" class="validate">
-                <label for="password0">Password</label>
-            </div>
-            <div class="input-field col s3">
-                <input id="password1" type="password" class="validate">
-                <label for="password1">Type your password again</label>
-            </div>
-            <div class="input-field col s3">
-                <input id="permisson" type="text" class="validate">
-                <label for="permisson">Permisson</label>
-            </div>
+    <form onsubmit="return false;">
+        <div class="container" style="text-align: center; display: table;">
+            <br>
+            <h1>Admin interface</h1>
+            <h5>Add new User:</h5>
+            <div class="row">
+                <div class="input-field col s3">
+                    <input id="username" type="text" class="validate">
+                    <label for="username">Username</label>
+                </div>
+                <div class="input-field col s3">
+                    <input id="password0" type="password" class="validate">
+                    <label for="password0">Password</label>
+                </div>
+                <div class="input-field col s3">
+                    <input id="password1" type="password" class="validate">
+                    <label for="password1">Type your password again</label>
+                </div>
+                <div class="input-field col s3">
+                    <input id="permission" type="text" class="validate">
+                    <label for="permission">Permission</label>
+                </div>
 
-        </div>
-        <div class="row">
-            <div class="col s12">
-                <button class="btn waves-effect waves-light" id="addRedirect">Submit
-                    <i class="material-icons right">send</i>
-                </button>
             </div>
-        </div>
-        <br><br>
-        <h5>Current users:</h5>
-        <br>
-        <table class="striped centered">
-            <thead>
-                <tr>
-                    <th>User</th>
-                    <th>Permissions</th>
-                    <th>Created</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody id="data">
-            </tbody>
-        </table>
+            <div class="row">
+                <div class="col s12">
+                    <button class="btn waves-effect waves-light" id="submit">Submit
+                        <i class="material-icons right">send</i>
+                    </button>
+                </div>
+            </div>
+    </form>
+
+
+    <br><br>
+    <h5>Current users:</h5>
+    <br>
+    <table class="centered highlight">
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>Permissions</th>
+                <th>Created</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody id="data">
+
+        </tbody>
+    </table>
     </div>
 
-    <script src="gui.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script>
-        M.AutoInit();
-    </script>
+    <br>
+
+    <script src="index.js"></script>
+    <script src="../materialize/materialize.min.js"></script>
+
 </body>
 
 </html>
