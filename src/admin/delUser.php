@@ -1,9 +1,10 @@
 <?php
 require "../api/login.php";
-$login->checkLogin();
-if ($login->checkPermission($_SESSION["username"],"admin")) {
-    $id = $_POST["id"];
-
+$login->checkLoginWithPermissions($_SESSION["username"], "admin");
+$id = $_POST["id"];
+if ($login->checkUserByID($id)) {
     $login->deleteUserByID($id);
     $login->throwSuccess();
+} else {
+    $login->throwError("User doesn't exist!");
 }

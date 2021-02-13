@@ -104,11 +104,25 @@ class LOGIN
         }
     }
 
+    public function checkUserByID($id)
+    {
+        $stmt = $this->conn->prepare('SELECT user FROM user WHERE ID = ?');
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $output = $result->fetch_assoc();
+        if (isset($output["user"])) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function getUser($user = "", $limit = -1)
     {
         $user = '%' . $user . '%';
         if ($limit < 0) {
-            $stmt = $this->conn->prepare('SELECT user, password, permissions, creationDate, ID FROM user WHERE user LIKE ?');
+            $stmt = $this->conn->prepare('SELECT user, permissions, creationDate, ID FROM user WHERE user LIKE ?');
             $stmt->bind_param("s", $user);
         } else {
             $stmt = $this->conn->prepare('SELECT user, permissions, creationDate, ID FROM user WHERE user LIKE ? LIMIT ?');
@@ -118,7 +132,7 @@ class LOGIN
         $stmt->execute();
         $result = $stmt->get_result();
         $output = $result->fetch_all(MYSQLI_ASSOC);
-        for ($i=0; $i < count($output); $i++) { 
+        for ($i = 0; $i < count($output); $i++) {
             $output[$i]["permissions"] = json_decode($output[$i]["permissions"]);
         }
         return $output;
@@ -165,10 +179,10 @@ class LOGIN
         $oldPermissons = $this->getPermissions($user);
         $args = func_get_args();
         $output = true;
-        
+
         for ($i = 1; $i < count($args); $i++) {
             $permission = $args[$i];
-            
+
             if ($this->checkPermission($user, $permission)) {
                 $output = true;
             } else {
@@ -329,14 +343,12 @@ class LOGIN
     }
     public function checkLoginWithPermissions($username)
     {
-        $args = func_get_args();
+        $this->checkLogin();
 
+        $args = func_get_args();
         if (!call_user_func_array(array($this, "checkPermissions"), $args)) {
             $this->throwErrorPage("<h1>Access denied</h1>", 403);
-        } else {
-            $this->throwSuccess();
         }
-
     }
 }
 

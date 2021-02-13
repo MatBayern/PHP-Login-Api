@@ -45,9 +45,51 @@
                 </div>
             </div>
     </form>
-
-
     <br><br>
+
+    <div class="row">
+        <div class="input-field col s6">
+            <input id="searchUser" type="text">
+            <label for="searchUser">Search user</label>
+        </div>
+        <p class="range-field col s6">
+            <label for="limit">Limit</label>
+            <input type="range" id="limit" min="10" max="1000" step="10" value="100">
+        </p>
+    </div>
+
+    <div id="confirmDelete" class="modal">
+        <div class="modal-content">
+            <h4>Confirm delete</h4>
+            <div style="display:inline">
+                <p>Do you want to delete the following user:<br>
+                <table>
+                    <tr>
+                        <td><b>Username:</b></td>
+                        <td id="confirmDelete0"></td>
+                    </tr>
+                    <tr>
+                        <td><b>Permissions:</b></td>
+                        <td id="confirmDelete1"></td>
+                    </tr>
+                    <tr>
+                        <td><b>Created:</b></td>
+                        <td id="confirmDelete2"></td>
+                    </tr>
+                    <tr>
+                        <td><b>ID:</b></td>
+                        <td id="confirmDelete3"></td>
+                    </tr>
+                </table>
+                </p>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a class="modal-close waves-effect waves-green btn-flat" onclick="del()">Yes</a>
+            <a class="modal-close waves-effect waves-green btn-flat">No</a>
+        </div>
+    </div>
+
     <h5>Current users:</h5>
     <br>
     <table class="centered highlight">
@@ -66,9 +108,9 @@
     </div>
 
     <br>
-
-    <script src="index.js"></script>
     <script src="../materialize/materialize.min.js"></script>
+    <script src="index.js"></script>
+
 
 </body>
 
