@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@900" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=0.6">
-    <title>Admin User Interdface</title>
+    <title>Admin User Interface</title>
 </head>
 
 <body>
@@ -47,17 +47,6 @@
     </form>
     <br><br>
 
-    <div class="row">
-        <div class="input-field col s6">
-            <input id="searchUser" type="text">
-            <label for="searchUser">Search user</label>
-        </div>
-        <p class="range-field col s6">
-            <label for="limit">Limit</label>
-            <input type="range" id="limit" min="10" max="1000" step="10" value="100">
-        </p>
-    </div>
-
     <div id="confirmDelete" class="modal">
         <div class="modal-content">
             <h4>Confirm delete</h4>
@@ -90,15 +79,38 @@
         </div>
     </div>
 
+
     <h5>Current users:</h5>
-    <br>
+    <div class="row">
+        <div class="input-field col s6">
+            <input id="searchUser" type="text">
+            <label for="searchUser">Search user</label>
+        </div>
+        <p class="range-field col s6">
+            <label for="limit">Limit</label>
+            <input type="range" id="limit" min="10" max="1000" step="10" value="100">
+        </p>
+        <div class="input-field col s4">
+            <a class="tooltipped" id="selectAll" data-position="top" data-tooltip="Select all"><i class="material-icons"
+                    style="color: #aeea00; cursor: pointer; font-size: 40px;" onclick="selectAll()">select_all</i></a>
+        </div>
+        <div class="input-field col s4">
+            <a class="tooltipped" id="edit" data-position="top" data-tooltip="Edit"><i class="material-icons"
+                    style="color: #0097a7; cursor: pointer; font-size: 40px;" onclick="edit()">edit</i></a>
+        </div>
+        <div class="input-field col s4">
+            <a class="tooltipped" id="delete" data-position="top" data-tooltip="Delete"><i class="material-icons"
+                    style="color: #f44336; cursor: pointer; font-size: 40px;" onclick="confirmDelete()">delete</i></a>
+        </div>
+    </div>
+
     <table class="centered highlight">
         <thead>
             <tr>
+                <th></th>
                 <th>User</th>
                 <th>Permissions</th>
                 <th>Created</th>
-                <th></th>
             </tr>
         </thead>
         <tbody id="data">
