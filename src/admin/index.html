@@ -47,29 +47,11 @@
     </form>
     <br><br>
 
-    <div id="confirmDelete" class="modal">
+    <div id="confirmDelete" class="modal modal-fixed-footer">
         <div class="modal-content">
             <h4>Confirm delete</h4>
             <div style="display:inline">
-                <p>Do you want to delete the following user:<br>
-                <table>
-                    <tr>
-                        <td><b>Username:</b></td>
-                        <td id="confirmDelete0"></td>
-                    </tr>
-                    <tr>
-                        <td><b>Permissions:</b></td>
-                        <td id="confirmDelete1"></td>
-                    </tr>
-                    <tr>
-                        <td><b>Created:</b></td>
-                        <td id="confirmDelete2"></td>
-                    </tr>
-                    <tr>
-                        <td><b>ID:</b></td>
-                        <td id="confirmDelete3"></td>
-                    </tr>
-                </table>
+                <p id="confirmDeleteText">Do you want to delete the following users:<br>
                 </p>
             </div>
         </div>
@@ -90,17 +72,41 @@
             <label for="limit">Limit</label>
             <input type="range" id="limit" min="10" max="1000" step="10" value="100">
         </p>
-        <div class="input-field col s4">
-            <a class="tooltipped" id="selectAll" data-position="top" data-tooltip="Select all"><i class="material-icons"
-                    style="color: #aeea00; cursor: pointer; font-size: 40px;" onclick="selectAll()">select_all</i></a>
+        <div class="col s4">
+            <a class="tooltipped" id="selectAll" data-position="top" data-tooltip="Select all"><i class="material-icons" style="color: #aeea00; cursor: pointer; font-size: 40px; user-select: none;" onclick="selectAll()">select_all</i></a>
         </div>
-        <div class="input-field col s4">
-            <a class="tooltipped" id="edit" data-position="top" data-tooltip="Edit"><i class="material-icons"
-                    style="color: #0097a7; cursor: pointer; font-size: 40px;" onclick="edit()">edit</i></a>
+        <div class="col s4">
+            <a class="tooltipped" id="edit" data-position="top" data-tooltip="Edit"><i class="material-icons" style="color: #0097a7; cursor: pointer; font-size: 40px; user-select: none;" onclick="edit()">edit</i></a>
         </div>
-        <div class="input-field col s4">
-            <a class="tooltipped" id="delete" data-position="top" data-tooltip="Delete"><i class="material-icons"
-                    style="color: #f44336; cursor: pointer; font-size: 40px;" onclick="confirmDelete()">delete</i></a>
+        <div class="col s4">
+            <a class="tooltipped" id="delete" data-position="top" data-tooltip="Delete"><i class="material-icons" style="color: #f44336; cursor: pointer; font-size: 40px; user-select: none;" onclick="confirmDelete()">delete</i></a>
+        </div>
+        <br><br><br><br><br><br><br><br>
+        <div class="row center-align">
+            <div class="col s4">
+                <div class="col">
+                    <b>Selected User: </b>
+                </div>
+                <div class="col" id="selectedUser">
+                    0
+                </div>
+            </div>
+            <div class="col s4">
+                <div class="col">
+                    <b>Displayed User: </b>
+                </div>
+                <div class="col" id="displayedUser">
+                    0
+                </div>
+            </div>
+            <div class="col s4">
+                <div class="col">
+                    <b>User count: </b>
+                </div>
+                <div class="col" id="userCount">
+                    0
+                </div>
+            </div>
         </div>
     </div>
 

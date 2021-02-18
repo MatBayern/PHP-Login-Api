@@ -138,6 +138,15 @@ class LOGIN
         return $output;
     }
 
+    function countUser() {
+        $stmt = $this->conn->prepare('SELECT COUNT(*) FROM user');
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $outp = $result->fetch_all(MYSQLI_ASSOC);
+        $output["count"] = $outp[0]["COUNT(*)"];
+        return $output;
+    }
+
     /*
 
     PERMISSONS
