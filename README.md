@@ -9,3 +9,4 @@ The installation description is in our <a href="https://github.com/MatBayern/PHP
 - Edit
 - More Languages f.e German
 - Remember me
+- Update Checker
