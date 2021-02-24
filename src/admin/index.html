@@ -50,10 +50,8 @@
     <div id="confirmDelete" class="modal modal-fixed-footer">
         <div class="modal-content">
             <h4>Confirm delete</h4>
-            <div style="display:inline">
-                <p id="confirmDeleteText">Do you want to delete the following users:<br>
-                </p>
-            </div>
+            <p id="confirmDeleteText">Do you want to delete the following users:<br>
+            </p>
         </div>
         <div class="modal-footer">
             <a class="modal-close waves-effect waves-green btn-flat" onclick="del()">Yes</a>
@@ -61,6 +59,34 @@
         </div>
     </div>
 
+    <div id="editUser" class="modal">
+        <div class="modal-content">
+            <h4>Edit User</h4>
+            <p>Edit the following user:<br>
+            <div class="input-field">
+                <input id="edit_username" type="text" class="validate">
+                <label for="edit_username">Username</label>
+            </div>
+            <div class="input-field">
+                <input id="edit_permission" type="text" class="validate" disabled>
+                <label for="edit_permission">Permission</label>
+            </div>
+            <div class="input-field">
+                <input id="edit_password0" type="password" disabled>
+                <label for="edit_password0">Password</label>
+            </div>
+            <div class="input-field">
+                <input id="edit_password1" type="password" disabled>
+                <label for="edit_password1">Confirm Password</label>
+            </div>
+            <b>Leave passwords blank if you don't want to change it.</b>
+            </p>
+        </div>
+        <div class="modal-footer">
+            <a class="modal-close waves-effect waves-green btn-flat" onclick="edit()">Save</a>
+            <a class="modal-close waves-effect waves-green btn-flat">Discard changes</a>
+        </div>
+    </div>
 
     <h5>Current users:</h5>
     <div class="row">
@@ -72,14 +98,17 @@
             <label for="limit">Limit</label>
             <input type="range" id="limit" min="10" max="1000" step="10" value="100">
         </p>
-        <div class="col s4">
+        <div class="col s3">
             <a class="tooltipped" id="selectAll" data-position="top" data-tooltip="Select all"><i class="material-icons" style="color: #aeea00; cursor: pointer; font-size: 40px; user-select: none;" onclick="selectAll()">select_all</i></a>
         </div>
-        <div class="col s4">
-            <a class="tooltipped" id="edit" data-position="top" data-tooltip="Edit"><i class="material-icons" style="color: #0097a7; cursor: pointer; font-size: 40px; user-select: none;" onclick="edit()">edit</i></a>
+        <div class="col s3">
+            <a class="tooltipped" id="edit" data-position="top" data-tooltip="Edit"><i class="material-icons" style="color: #0097a7; cursor: pointer; font-size: 40px; user-select: none;" onclick="StartEdit()">edit</i></a>
         </div>
-        <div class="col s4">
+        <div class="col s3">
             <a class="tooltipped" id="delete" data-position="top" data-tooltip="Delete"><i class="material-icons" style="color: #f44336; cursor: pointer; font-size: 40px; user-select: none;" onclick="confirmDelete()">delete</i></a>
+        </div>
+        <div class="col s3">
+            <a onclick="getTableData()" class="tooltipped" id="refresh" data-position="top" data-tooltip="Refresh"><i class="material-icons" style="color: #5c6bc0; cursor: pointer; font-size: 40px; user-select: none;">cached</i></a>
         </div>
         <br><br><br><br><br><br><br><br>
         <div class="row center-align">

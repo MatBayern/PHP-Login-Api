@@ -90,6 +90,13 @@ class LOGIN
         $stmt->execute();
     }
 
+    public function renameUser($id, $username)
+    {
+        $stmt = $this->conn->prepare("UPDATE `user` SET user=? WHERE `ID` = ?");
+        $stmt->bind_param("si", $username, $id);
+        $stmt->execute();
+    }
+
     public function checkUser($user)
     {
         $stmt = $this->conn->prepare('SELECT user FROM user WHERE user = ?');
@@ -138,7 +145,22 @@ class LOGIN
         return $output;
     }
 
-    function countUser() {
+    public function getUserByID($id)
+    {
+        $stmt = $this->conn->prepare('SELECT user, permissions, creationDate, ID FROM user WHERE ID = ?');
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $output = $result->fetch_all(MYSQLI_ASSOC);
+        $output = $output[0];
+        if (isset($output["permissions"])) {
+            $output["permissions"] = json_decode($output["permissions"]);
+        }
+        return $output;
+    }
+
+    public function countUser()
+    {
         $stmt = $this->conn->prepare('SELECT COUNT(*) FROM user');
         $stmt->execute();
         $result = $stmt->get_result();
