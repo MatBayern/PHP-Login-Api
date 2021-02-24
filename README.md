@@ -7,5 +7,6 @@ The installation description is in our <a href="https://github.com/MatBayern/PHP
 ## To do List
 - Settings
 - Edit
-- Languages
+- More Languages f.e German
 - Remember me
+- Update Checker
