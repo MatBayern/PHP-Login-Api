@@ -381,6 +381,19 @@ class LOGIN
             $this->throwErrorPage("<h1>Access denied</h1>", 403);
         }
     }
+    /* 
+    
+        SETTINGS
+    
+    */
+    public function getSettings()
+    {
+        $sql='SELECT * FROM settings';
+        $result = $this->conn->query($sql);
+        $output = $result->fetch_all(MYSQLI_ASSOC);
+        $output = json_encode($output);
+        return $output;
+    }
 }
 
 $login = new LOGIN();
