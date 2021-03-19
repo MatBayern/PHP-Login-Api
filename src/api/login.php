@@ -391,7 +391,24 @@ class LOGIN
         $sql='SELECT * FROM settings';
         $result = $this->conn->query($sql);
         $output = $result->fetch_all(MYSQLI_ASSOC);
-        $output = json_encode($output);
+        return $output;
+    }
+
+    public function addSetting($name, $default) {
+        $stmt = $this->conn->prepare("INSERT INTO settings (name, value, defaultValue) VALUES (?, ?, ?)");
+        $stmt->bind_param("sss", $name, $default, $default);
+        $stmt->execute();
+    }
+    public function getSettingByName($name)
+    {
+        $stmt = $this->conn->prepare('SELECT value FROM settings WHERE name = ?');
+        $stmt->bind_param("s", $name);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+        $output = $result->fetch_assoc();
+
+        $output = json_decode($output["value"]);
         return $output;
     }
 }
