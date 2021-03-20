@@ -54,13 +54,21 @@ class LOGIN
 
     public function addUser($username, $password)
     {
-        // Hash password
-        // $password = password_hash($password0, PASSWORD_ARGON2ID, $hashOptions);
-        $password = password_hash($password, PASSWORD_ARGON2ID);
+        if ($this->getSettingByName("register") !== 0) {
+            // Hash password
+            $hashOptions = [
+                'memory_cost' => $this->getSettingByName("memory_cost"),
+                'time_cost' => $this->getSettingByName("time_cost"),
+                'threads' => $this->getSettingByName("threads"),
+            ];
+            $password = password_hash($password, PASSWORD_ARGON2ID, $hashOptions);
 
-        $stmt = $this->conn->prepare("INSERT INTO user (user, password) VALUES (?, ?)");
-        $stmt->bind_param("ss", $username, $password);
-        $stmt->execute();
+            $stmt = $this->conn->prepare("INSERT INTO user (user, password) VALUES (?, ?)");
+            $stmt->bind_param("ss", $username, $password);
+            $stmt->execute();
+        } else {
+            $this->throwError("Registration is not allowed!");
+        }
     }
 
     public function addUserWithPermissions($username, $password)
@@ -381,24 +389,26 @@ class LOGIN
             $this->throwErrorPage("<h1>Access denied</h1>", 403);
         }
     }
-    /* 
-    
-        SETTINGS
-    
-    */
+    /*
+
+    SETTINGS
+
+     */
     public function getSettings()
     {
-        $sql='SELECT * FROM settings';
+        $sql = 'SELECT * FROM settings';
         $result = $this->conn->query($sql);
         $output = $result->fetch_all(MYSQLI_ASSOC);
         return $output;
     }
 
-    public function addSetting($name, $default) {
+    public function addSetting($name, $default)
+    {
         $stmt = $this->conn->prepare("INSERT INTO settings (name, value, defaultValue) VALUES (?, ?, ?)");
-        $stmt->bind_param("sss", $name, $default, $default);
+        $stmt->bind_param("sii", $name, $default, $default);
         $stmt->execute();
     }
+
     public function getSettingByName($name)
     {
         $stmt = $this->conn->prepare('SELECT value FROM settings WHERE name = ?');
@@ -410,6 +420,14 @@ class LOGIN
 
         $output = json_decode($output["value"]);
         return $output;
+    }
+
+    public function setSetting($name, $value)
+    {
+        $value = (int) $value;
+        $stmt = $this->conn->prepare("UPDATE settings SET value=? WHERE name = ?");
+        $stmt->bind_param("is", $value, $name);
+        $stmt->execute();
     }
 }
 

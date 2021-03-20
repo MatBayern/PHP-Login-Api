@@ -14,8 +14,8 @@
 
 <body>
   <nav>
-    <div class="nav-wrapper indigo">
-      <a href="https://github.com/MatBayern/PHP-Login-Page" class="brand-logo tooltipped" data-position="bottom"><img src="../../PHP-Login-Page-Logo.png" width="180"></a>
+    <div class="nav-wrapper green">
+      <a href="https://github.com/MatBayern/PHP-Login-Page" class="brand-logo tooltipped" data-position="bottom" data-tooltip="GitHub page"><img src="../../PHP-Login-Page-Logo.png" width="180"></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="../">Admin interface</a></li>
         <li><a>Settings</a></li>
@@ -34,9 +34,9 @@
         <div class="col s12">
           <lable><b>Memory cost</b></lable>
           <br>
-          <a onclick='setDefaultValue("memory_cost")' class="tooltipped" id="Default" data-position="top" data-tooltip="Default get"><i class="material-icons" style="color: #5c6bc0; cursor: pointer; font-size: 40px; user-select: none;">cached</i></a>
+          <a onclick='setDefaultValue("memory_cost")' class="tooltipped" id="Default0" data-position="top" data-tooltip="Get default"><i class="material-icons" style="color: #5c6bc0; cursor: pointer; font-size: 40px; user-select: none;">cached</i></a>
           <div class="input-field inline">
-            <input id="memory_cost" type="number" class="validate" value="1" min="1" default="test">
+            <input id="memory_cost" type="number" class="validate" value="1" min="1">
             <label for="memory_cost">Memory cost</label>
           </div>
         </div>
@@ -47,9 +47,9 @@
       <div class="col s12">
         <lable><b>Threads</b></lable>
         <br>
-        <a onclick='setDefaultValue("threads")' class="tooltipped" id="Default" data-position="top" data-tooltip="Default get"><i class="material-icons" style="color: #5c6bc0; cursor: pointer; font-size: 40px; user-select: none;">cached</i></a>
+        <a onclick='setDefaultValue("threads")' class="tooltipped" id="Default1" data-position="top" data-tooltip="Get default"><i class="material-icons" style="color: #5c6bc0; cursor: pointer; font-size: 40px; user-select: none;">cached</i></a>
         <div class="input-field inline">
-          <input id="threads" type="number" class="validate" value="1">
+          <input id="threads" type="number" class="validate" value="1" min="1">
           <label for="threads">Threads</label>
         </div>
       </div>
@@ -59,15 +59,36 @@
       <div class="col s12">
         <lable><b>Time cost</b></lable>
         <br>
-        <a onclick='setDefaultValue("time_cost")' class="tooltipped" id="Default" data-position="top" data-tooltip="Default get"><i class="material-icons" style="color: #5c6bc0; cursor: pointer; font-size: 40px; user-select: none;">cached</i></a>
+        <a onclick='setDefaultValue("time_cost")' class="tooltipped" id="Default2" data-position="top" data-tooltip="Get default "><i class="material-icons" style="color: #5c6bc0; cursor: pointer; font-size: 40px; user-select: none;">cached</i></a>
         <div class="input-field inline">
-          <input id="time_cost" type="number" class="validate" value="1" min="1">
+          <input id="time_cost" type="number" class="validate" value="1" min="1" default=4>
           <label for="time_cost">Time cost</label>
         </div>
       </div>
     </div>
 
+  
+  <h5><u>Register Settings</u></h5>
+  <div class="row">
+    <div class="col s12">
+      <lable><b>Registration</b></lable>
+      <br>
+      <div class="switch">
+        <label>
+          Off
+          <input type="checkbox" id="register">
+          <span class="lever"></span>
+          On
+        </label>
+      </div>          
+    </div>
   </div>
+  <div class="row"> 
+    <button class="btn waves-effect waves-light" name="action" id="submit">Submit
+      <i class="material-icons right">send</i>
+    </button>
+  </div>
+</div>
   </div>
   <script src="../../materialize/materialize.min.js"></script>
   <script src="index.js"></script>
