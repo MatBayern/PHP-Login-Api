@@ -1,6 +1,4 @@
 <?php
-session_start();
-
-// destroy the session
-session_destroy(); 
-?>
+require "api/login.php";
+$login->logout();
+header('Location: /');

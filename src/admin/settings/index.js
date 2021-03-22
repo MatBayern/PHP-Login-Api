@@ -7,12 +7,19 @@ function submit() {
     let threads = document.getElementById("threads").valueAsNumber;
     let time_cost = document.getElementById("time_cost").valueAsNumber;
     let register;
+    let remember_me;
 
     if (document.getElementById("register").checked) {
         register = 1;
     } else {
         register = 0;
     }
+    if (document.getElementById("remember_me").checked) {
+        remember_me = 1;
+    } else {
+        remember_me = 0;
+    }
+
     if (memory_cost < document.getElementById("memory_cost").default) {
         M.toast({ html: "Memory value are too low! " });
         return;
@@ -32,7 +39,7 @@ function submit() {
         }
 
     }
-    xhr.send("memory_cost=" + memory_cost + "&threads=" + threads + "&time_cost=" + time_cost + "&register=" +register);
+    xhr.send("memory_cost=" + memory_cost + "&threads=" + threads + "&time_cost=" + time_cost + "&register=" +register+"&remember_me="+remember_me);
 
 }
 
@@ -52,6 +59,14 @@ function getValues() {
                     document.getElementById("register").checked = false;
                 } else {
                     document.getElementById("register").checked = true;
+                }
+                continue;
+            }
+            if (json[i].name === "remember_me") {
+                if (json[i].value === "0") {
+                    document.getElementById("remember_me").checked = false;
+                } else {
+                    document.getElementById("remember_me").checked = true;
                 }
                 continue;
             }

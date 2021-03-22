@@ -19,6 +19,7 @@
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="../">Admin interface</a></li>
         <li><a>Settings</a></li>
+        <li><a href="../../logout.php">Logout</a></li>
       </ul>
     </div>
   </nav>
@@ -83,6 +84,21 @@
       </div>          
     </div>
   </div>
+  <h5><u>Login Settings</u></h5>
+  <div class="row">
+    <div class="col s12">
+      <lable><b>Remember me</b></lable>
+      <br>
+      <div class="switch">
+        <label>
+          Off
+          <input type="checkbox" id="remember_me">
+          <span class="lever"></span>
+          On
+        </label>
+      </div>          
+    </div>
+  </div>
   <div class="row"> 
     <button class="btn waves-effect waves-light" name="action" id="submit">Submit
       <i class="material-icons right">send</i>
@@ -92,6 +108,7 @@
   </div>
   <script src="../../materialize/materialize.min.js"></script>
   <script src="index.js"></script>
+  <script src="../../js/modal.js"></script>
 
 
 </body>

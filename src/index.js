@@ -5,6 +5,7 @@ document.getElementById("submit").addEventListener("click", submit);
 function submit() {
     let username = document.getElementById("username").value;
     let password = document.getElementById("password").value;
+    let remember_me = document.getElementById("remember").checked;
     if (password !== "" && username !== "") {
         var xhr = new XMLHttpRequest();
         xhr.open("POST", 'login.php', true);
@@ -14,7 +15,7 @@ function submit() {
 
         xhr.onload = function () { // Call a function when the state changes.
             let json = JSON.parse(xhr.response);
-            if (json["login"] === true) {
+            if (json["error"] === false) {
                 window.location.href = "admin";
 
             } else {
@@ -22,7 +23,7 @@ function submit() {
             }
             console.log(json);
         }
-        xhr.send("username=" + username + "&password=" + password);
+        xhr.send("username=" + username + "&password0=" + password +"&remember_me="+remember_me);
     }
 }
 

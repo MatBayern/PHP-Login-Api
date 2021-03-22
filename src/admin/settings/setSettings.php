@@ -8,17 +8,20 @@ for ($i = 0; $i < count($settings); $i++) {
     if (isset($_POST[$name])) {
         $value = $_POST[$name];
         if (is_numeric($value)) {
-            if ($name === "register") {
+            if ($name === "register" or $name === "remember_me") {
                 $login->setSetting($name, $value);
-            } else {
+            }
+             else {
                 if ($value > 0) {
                     $login->setSetting($name, $value);
                 } else {
                     $login->throwError("Invalid value for " . $name);
+                    
                 }
             }
-        }else {
+        }else{
             $login->throwError("Invalid value for " . $name);
+           
         }
     }
 }
