@@ -5,7 +5,9 @@
 This project provides an API for a login System with registration and login. You can use our CSS or implement it in yours.
 The installation description is in our <a href="https://github.com/MatBayern/PHP-Login-Page/wiki">wiki</a> and also how to implement it.
 ## To do List
-- ~~Settings~~
+- Settings
+  - Make settings "cleaner"
+  - better table structure
 - Edit
 - More Languages f.e German
 - Remember me
