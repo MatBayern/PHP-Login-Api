@@ -469,15 +469,31 @@ class LOGIN
     AUTO AUTHENTICATION
 
      */
-    public function setAuthenticationCookie($username)
+    public function setAuthenticationCookie()
     {
-        $stmt = $conn->prepare('INSERT INTO `remember_me` (`username`, `cookie`, `login`) VALUES (?, ?, ?) ');
-        $stmt->bind_param("sss", $username, random_bytes(16), true);
-        $stmt->execute();
+        if (isset($_SESSION["login"]) and $_SESSION["login"]) {
+            $random = bin2hex(random_bytes(53));
+            $uniqid = uniqid('', true);
+            $uniqidPlain = str_replace(".", "", $uniqid);
+            $hash = hash('sha512', $uniqidPlain . $random);
+            $expiringDate = time() + 2629800;
+            setcookie("pla-data", $hash, $expiringDate, "/", "", true, true);
+            //Database insertion for the cookie
+            $stmt = $this->conn->prepare('INSERT INTO `autoLogin` (`username`, `cookie`, `login`, `expires`) VALUES (?, ?, ?, ?) '); # weiter mit timestamp
+            $login = true;
+            $stmt->bind_param("ssii", $_SESSION["username"], $hash, $login, $expiringDate);
+            $stmt->execute();
+        }
     }
+
+    public function checkAuthenticationCookie()
+    {
+
+    }
+
     public function getUsernameByCookie($cookie)
     {
-        $stmt = $this->conn->prepare('SELECT login FROM remember_me WHERE cookie = ?');
+        $stmt = $this->conn->prepare('SELECT login FROM autoLogin WHERE cookie = ?');
         $stmt->bind_param("s", $cookie);
         $stmt->execute();
 
