@@ -9,5 +9,7 @@ The installation description is in our <a href="https://github.com/MatBayern/PHP
 - Edit
 - More Languages f.e German
 - Remember me
-- - Databse cleaning clean old cookies
+  - Databse cleaning (clean old cookies)
+  - More cookies per user
+  - cookies
 - Update Checker
