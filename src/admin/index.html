@@ -63,6 +63,19 @@
             <h4>Confirm delete</h4>
             <p id="confirmDeleteText">Do you want to delete the following users:<br>
             </p>
+            <table class="centered highlight">
+                <thead>
+                    <tr>
+                        <th>User</th>
+                        <th>Permissions</th>
+                        <th>Created</th>
+                        <th>ID</th>
+                    </tr>
+                </thead>
+                <tbody id="table_del">
+        
+                </tbody>
+            </table>
         </div>
         <div class="modal-footer">
             <a class="modal-close waves-effect waves-green btn-flat" onclick="del()">Yes</a>
@@ -98,6 +111,16 @@
             <a class="modal-close waves-effect waves-green btn-flat">Discard changes</a>
         </div>
     </div>
+    <div id="update" class="modal">
+        <div class="modal-content">
+          <h4>Update checker</h4>
+          <p>A newer version is available! Current version: <code id="old_version"></code> latest version: <code id="new_version"></code></p>
+        </div>
+        <div class="modal-footer">
+        <a class="modal-close waves-effect waves-green btn-flat" href="https://github.com/MatBayern/PHP-Login-Api">Agree</a>  
+        <a class="modal-close waves-effect waves-green btn-flat" onclick="setRemindLaterTime()">Dismiss</a>
+        </div>
+      </div>
 
     <h5>Current users:</h5>
     <div class="row">
@@ -163,10 +186,12 @@
 
         </tbody>
     </table>
+    
     </div>
     <script src="../materialize/materialize.min.js"></script>
-    <script src="index.js"></script>
     <script src="../js/modal.js"></script>
+    <script src="index.js"></script>
+    <script src="../js/update.js"></script>
 
 
 </body>
