@@ -14,4 +14,4 @@ The installation description is in our <a href="https://github.com/MatBayern/PHP
   - Database cleaning (clean old cookies)
   - More cookies per user
   - cookies
-- Update Checker
+- ~~Update Checker~~
